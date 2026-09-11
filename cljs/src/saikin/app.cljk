@@ -25,7 +25,7 @@
     deleted, from `svelte/src/routes/xrpc/[...path]/+server.ts`) —
     backend Worker/XRPC code is out of scope for a frontend migration.
   - `:app/relative-path` now names this file
-    (`cljs/src/saikin/app.cljs`), not the deleted Svelte one
+    (`cljs/src/saikin/app.cljk`), not the deleted Svelte one
     (`60-apps/etzhayyim-project-saikin/svelte/src/routes/+page.svelte`).
 
   `public/index.html`'s inlined <style> was produced once, at authoring
@@ -66,7 +66,7 @@
               "APP_DISPLAY_NAME" "APP_FRAMEWORK" "APP_NANOID" "APP_PERFORMER_TYPE"
               "APP_UI_TYPE"]
    :app/xrpc? false
-   :app/relative-path "cljs/src/saikin/app.cljs"})
+   :app/relative-path "cljs/src/saikin/app.cljk"})
 
 (rf/reg-event-db
  :initialize-db
