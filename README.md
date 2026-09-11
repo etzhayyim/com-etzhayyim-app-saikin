@@ -14,7 +14,7 @@ Worker/XRPC logic was moved, not rewritten:
 
 | Then | Now |
 |---|---|
-| `svelte/src/routes/+page.svelte` (the status page) | [`cljs/src/saikin/app.cljs`](cljs/src/saikin/app.cljs) — same fields, faithfully ported |
+| `svelte/src/routes/+page.svelte` (the status page) | [`cljs/src/saikin/app.cljk`](cljs/src/saikin/app.cljk) — same fields, faithfully ported |
 | `svelte/src/routes/xrpc/[...path]/+server.ts` (the file that actually deployed, per `wrangler.jsonc`'s old `main`) | [`src/xrpc-dispatcher.ts`](src/xrpc-dispatcher.ts) — moved byte-for-byte, only a provenance header comment added |
 | `wrangler.jsonc` `main: svelte/.svelte-kit/cloudflare/_worker.js` | `main` dropped entirely |
 | `wrangler.jsonc` `assets.directory: ./svelte/.svelte-kit/cloudflare/client` | `assets.directory: ./cljs/public` |
@@ -30,7 +30,7 @@ comment for the full reasoning.
 **This is unverified**: `wrangler deploy` / `wrangler dev` were not run
 against this change.
 
-Three fields in `cljs/src/saikin/app.cljs`'s `default-db` were also
+Three fields in `cljs/src/saikin/app.cljk`'s `default-db` were also
 corrected, not merely ported, against what the old Svelte constant held —
 see that namespace's docstring for detail:
 
@@ -40,7 +40,7 @@ see that namespace's docstring for detail:
 - `:app/xrpc?` is now `false`, even though the Svelte constant carried
   `true`, because `main` no longer deploys the XRPC handler (it is
   preserved, unwired, at `src/xrpc-dispatcher.ts`).
-- `:app/relative-path` now names `cljs/src/saikin/app.cljs`, not the
+- `:app/relative-path` now names `cljs/src/saikin/app.cljk`, not the
   deleted Svelte source path.
 
 ## Build and test
